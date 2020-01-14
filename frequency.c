@@ -6,7 +6,6 @@
 
 #define ZERO 0
 
-
 int main(int argc, char* argv[]){
 
     TrieNode * pTrieNode = newNode();
