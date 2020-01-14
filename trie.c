@@ -31,6 +31,7 @@ void Start(TrieNode * pRootTrieNode)
                 pCurNode->count++;
                 pCurNode = NULL;
             }
+            
             continue;
         }
         if (NULL == pCurNode)
