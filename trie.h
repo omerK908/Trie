@@ -14,6 +14,24 @@
 // use only 'a' through 'z' and lower case 
 #define CHAR_TO_INDEX(c) ((int)c - (int)'a')
 
+#define NOCHILD -1
+
+// trie node 
+typedef struct TrieNode 
+{ 
+    struct TrieNode *children[ALPHABET_SIZE]; 
+
+    char letter;
+    long unsigned int count;
+  
+   
+    // end of a word 
+    //bool isEndOfWord; 
+}TrieNode; 
+
+TrieNode *newNode(void);
+
+
 //void insert(TrieNode *root, const char *wordToInsert);
 
 bool search(TrieNode *root, const char *wordToSearch);
