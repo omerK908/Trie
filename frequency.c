@@ -6,11 +6,14 @@
 
 #define ZERO 0
 
+
 int main(int argc, char* argv[]){
 
     TrieNode * pTrieNode = newNode();
-    Start(pTrieNode); 
-    char * str = (char *)malloc(ZERO);
+    Start(pTrieNode);
+    int longWord = 0;
+    longWord = longestWord(pTrieNode, ZERO);
+    char * str = (char *)malloc(longWord);
 
     if(argc == 2 && strcmp(argv[1], "r") == 0){
         printReverse(pTrieNode, str, ZERO);
