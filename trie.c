@@ -18,7 +18,10 @@ void Start(TrieNode * pRootTrieNode)
         ch = tolower(ch);
         if( isStop(ch) )
         {
-            pCurNode->count++;
+            if(pCurNode != NULL)
+            {
+                pCurNode->count++;
+            }
             return;
         }
         if (!isCharLeagal(ch)) continue;
@@ -31,7 +34,6 @@ void Start(TrieNode * pRootTrieNode)
                 pCurNode->count++;
                 pCurNode = NULL;
             }
-            
             continue;
         }
         if (NULL == pCurNode)
@@ -90,7 +92,6 @@ TrieNode * newNode(void)
     if (pNode) 
     { 
         pNode->count = 0; 
-  
         for (int i = 0; i < ALPHABET_SIZE; i++){
             pNode->children[i] = NULL; 
         }
@@ -99,13 +100,13 @@ TrieNode * newNode(void)
         printf("Memory Error!");
         return NULL;
     }
-    return pNode; 
+    return pNode;
 } 
 
 bool isStop(char c){
-    if(c == EOF) return true;
-    return false;
+    return c == EOF;
 }
+
 bool needNewWord(char c){
      if(c == ENTER || c == SPACE || c == TAB) // change 
         return true;
@@ -135,7 +136,7 @@ void print(TrieNode* head,char word[], int level){
     for(i = 0; i < ALPHABET_SIZE; i++){
         if(runner->children[i] != NULL){
             word[level]=runner->children[i]->letter;
-            print(runner->children[i], word,level + 1);
+            print(runner->children[i], word, level + 1);
         }
     }
 }
@@ -154,7 +155,6 @@ void printReverse(TrieNode* root,char word[], int level){
             printReverse(runner->children[i], word, level + 1);
         }
     }
-
 }
 
 int longestWord(TrieNode * node, int count){
